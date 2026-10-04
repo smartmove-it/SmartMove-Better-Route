@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}
+Admin Dashboard – SmartMove
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+
+    <h1>Admin Dashboard</h1>
+
+    <p>
+        Manage locations and monitor community crowd reports.
+    </p>
+
+</section>
+
+
+<section class="dashboard-section">
+
+    <h2>Location Management</h2>
+
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+                <th>Location</th>
+                <th>Area</th>
+                <th>Crowd Level</th>
+                <th>Crowd</th>
+                <th>Best Time</th>
+                <th>Alternative</th>
+            </tr>
+
+            {% for location in locations %}
+
+            <tr>
+                <td>{{ location["name"] }}</td>
+                <td>{{ location["area"] }}</td>
+                <td>{{ location["crowd_level"] }}</td>
+                <td>{{ location["crowd_count"] }}%</td>
+                <td>{{ location["best_time"] }}</td>
+                <td>{{ location["alternative"] }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<section class="dashboard-section">
+
+    <h2>Recent Crowd Reports</h2>
+
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+                <th>Location</th>
+                <th>Crowd Level</th>
+                <th>Reported At</th>
+            </tr>
+
+            {% for report in reports %}
+
+            <tr>
+                <td>{{ report["name"] }}</td>
+                <td>{{ report["crowd_level"] }}</td>
+                <td>{{ report["created_at"] }}</td>
+            </tr>
+
+            {% else %}
+
+            <tr>
+                <td colspan="3">
+                    No crowd reports submitted yet.
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</section>
+
+{% endblock %}

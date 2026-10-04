@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+SmartMove – Better Route
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <h1>SmartMove – Better Route</h1>
+
+    <p>
+       🧭Find crowded areas, check current crowd levels,
+        and discover better alternatives for a smoother journey.
+    </p>
+
+    <a href="{{ url_for('crowd_status') }}" class="btn">
+        📍 Check Crowd Status
+    </a>
+
+</section>
+
+
+<section class="locations-section">
+
+    <h2>Why Use SmartMove?</h2>
+
+    <div class="location-grid">
+
+        <div class="location-card">
+            <h3>🚦 Crowd Status</h3>
+            <p>
+                Check whether a location currently has
+                Low, Moderate, or High crowd levels.
+            </p>
+        </div>
+
+        <div class="location-card">
+            <h3>🧭 Better Alternatives</h3>
+            <p>
+                Discover alternative locations that may
+                have less crowd.
+            </p>
+        </div>
+
+        <div class="location-card">
+            <h3>⏰ Best Time</h3>
+            <p>
+                Get suitable time suggestions to help
+                avoid heavy crowds.
+            </p>
+        </div>
+
+        <div class="location-card">
+            <h3>👥 Community Reports</h3>
+            <p>
+                Users can share the current crowd situation
+                and help other people.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

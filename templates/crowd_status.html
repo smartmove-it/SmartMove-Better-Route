@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block title %}
+Current Crowd Status – SmartMove
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+
+    <h1>Current Crowd Status</h1>
+
+    <p>
+        Check crowd levels and find better options for your journey.
+    </p>
+
+</section>
+
+
+<section class="locations-section">
+
+    <div class="location-grid">
+
+        {% for location in locations %}
+
+        <div class="location-card">
+
+            <h3>{{ location["name"] }}</h3>
+
+            <p>
+                <strong>Area:</strong>
+                {{ location["area"] }}
+            </p>
+
+            <p>
+                <strong>Crowd Level:</strong>
+                {{ location["crowd_level"] }}
+            </p>
+
+            <p>
+                <strong>Crowd:</strong>
+                {{ location["crowd_count"] }}%
+            </p>
+
+            <p>
+                <strong>Recommended Time:</strong>
+                {{ location["best_time"] }}
+            </p>
+
+            <p>
+                <strong>Alternative:</strong>
+                {{ location["alternative"] }}
+            </p>
+
+            <a
+                href="{{ url_for('location', location_id=location['id']) }}"
+                class="btn small-btn"
+            >
+                View Details
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<section class="report-section">
+
+    <h2>How SmartMove Works</h2>
+
+    <div class="location-grid">
+
+        <div class="location-card">
+            <h3>1️⃣ Select Location</h3>
+            <p>
+                Choose the location you want to check.
+            </p>
+        </div>
+
+        <div class="location-card">
+            <h3>2️⃣ Check Crowd</h3>
+            <p>
+                View the current crowd level of the selected location.
+            </p>
+        </div>
+
+        <div class="location-card">
+            <h3>3️⃣ Find Better Route</h3>
+            <p>
+                Check alternative locations with lower crowd levels.
+            </p>
+        </div>
+
+        <div class="location-card">
+            <h3>4️⃣ Plan Your Visit</h3>
+            <p>
+                Use the recommended time to plan a smoother journey.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="report-section">
+
+    <h2>Report Crowd Level</h2>
+
+    <p>
+        Share the current crowd situation and help other users.
+    </p>
+
+    <form action="{{ url_for('report') }}" method="POST">
+
+        <label for="location_id">
+            Select Location
+        </label>
+
+        <select
+            name="location_id"
+            id="location_id"
+            required
+        >
+
+            <option value="">
+                Select location
+            </option>
+
+            {% for location in locations %}
+
+            <option value="{{ location['id'] }}">
+                {{ location['name'] }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <label for="crowd_level">
+            Crowd Level
+        </label>
+
+        <select
+            name="crowd_level"
+            id="crowd_level"
+            required
+        >
+
+            <option value="">
+                Select crowd level
+            </option>
+
+            <option value="Low">
+                Low
+            </option>
+
+            <option value="Moderate">
+                Moderate
+            </option>
+
+            <option value="High">
+                High
+            </option>
+
+        </select>
+
+
+        <button type="submit" class="btn">
+            Submit Report
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ location["name"] }} – SmartMove
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+
+    <h1>{{ location["name"] }}</h1>
+
+    <p>
+        Check crowd information and discover better alternatives.
+    </p>
+
+</section>
+
+
+<section class="location-detail">
+
+    <!-- CURRENT LOCATION -->
+
+    <div class="location-card">
+
+        <h2>Current Crowd Status</h2>
+
+        <p>
+            <strong>Area:</strong>
+            {{ location["area"] }}
+        </p>
+
+        <p>
+            <strong>Crowd Level:</strong>
+            {{ location["crowd_level"] }}
+        </p>
+
+        <p>
+            <strong>Crowd:</strong>
+            {{ location["crowd_count"] }}%
+        </p>
+
+        <p>
+            <strong>Best Time:</strong>
+            {{ location["best_time"] }}
+        </p>
+
+        <p>
+            <strong>Alternative:</strong>
+            {{ location["alternative"] }}
+        </p>
+
+    </div>
+
+
+    <!-- ALTERNATIVES -->
+
+    <div class="location-card">
+
+        <h2>Nearby Alternatives</h2>
+
+        {% for alternative in alternatives %}
+
+        <div class="alternative-item">
+
+            <h3>{{ alternative["name"] }}</h3>
+
+            <p>
+                <strong>Crowd Level:</strong>
+                {{ alternative["crowd_level"] }}
+            </p>
+
+            <p>
+                <strong>Crowd:</strong>
+                {{ alternative["crowd_count"] }}%
+            </p>
+
+            <a
+                href="{{ url_for('location', location_id=alternative['id']) }}"
+                class="btn small-btn"
+            >
+                View Location
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<!-- REPORT -->
+
+<section class="report-section">
+
+    <h2>Update Crowd Report</h2>
+
+    <p>
+        Share the current crowd situation and help other users.
+    </p>
+
+    <form action="{{ url_for('report') }}" method="POST">
+
+        <input
+            type="hidden"
+            name="location_id"
+            value="{{ location['id'] }}"
+        >
+
+        <label for="crowd_level">
+            Crowd Level
+        </label>
+
+        <select
+            name="crowd_level"
+            id="crowd_level"
+            required
+        >
+
+            <option value="">
+                Select crowd level
+            </option>
+
+            <option value="Low">
+                Low
+            </option>
+
+            <option value="Moderate">
+                Moderate
+            </option>
+
+            <option value="High">
+                High
+            </option>
+
+        </select>
+
+        <button type="submit" class="btn">
+            Submit Report
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}

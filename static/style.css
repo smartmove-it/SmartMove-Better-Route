@@ -1,0 +1,416 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f8fc;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar {
+    background: #0f172a;
+    color: white;
+    padding: 16px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.brand {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.brand span {
+    color: #38bdf8;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 25px;
+}
+
+.navbar nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #38bdf8;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    min-height: 82vh;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+    text-align: center;
+    padding: 90px 20px;
+    background: linear-gradient(
+        135deg,
+        #dbeafe,
+        #eff6ff,
+        #e0f2fe
+    );
+}
+
+.hero h1 {
+    font-size: 46px;
+    color: #0f172a;
+    margin-bottom: 15px;
+}
+
+.hero h1::before {
+    content: "🧭 ";
+}
+
+.hero p {
+    max-width: 720px;
+    margin: 0 auto 30px;
+    font-size: 18px;
+    color: #475569;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 5px 12px rgba(37, 99, 235, 0.2);
+}
+
+.btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.small-btn {
+    margin-top: 12px;
+    padding: 9px 15px;
+}
+
+/* =========================
+   SECTION HEADINGS
+========================= */
+
+.locations-section,
+.dashboard-section,
+.report-section,
+.location-detail {
+    width: 86%;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+.locations-section h2,
+.dashboard-section h2,
+.report-section h2 {
+    color: #0f172a;
+    margin-bottom: 25px;
+    font-size: 27px;
+}
+
+.locations-section h2::before {
+    content: "📍 ";
+}
+
+.report-section h2::before {
+    content: "👥 ";
+}
+
+/* =========================
+   LOCATION CARDS
+========================= */
+
+.location-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(260px, 1fr)
+    );
+    gap: 25px;
+}
+
+.location-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.07);
+    transition: 0.3s;
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+}
+
+.location-card h2,
+.location-card h3 {
+    color: #0f172a;
+    margin-bottom: 13px;
+}
+
+.location-card h3::before {
+    content: "📍 ";
+}
+
+.location-card p {
+    margin: 9px 0;
+    color: #475569;
+}
+
+/* =========================
+   CROWD STATUS
+========================= */
+
+.location-card p:nth-of-type(2)::before {
+    content: "🚦 ";
+}
+
+.location-card p:nth-of-type(3)::before {
+    content: "📊 ";
+}
+
+.location-card p:nth-of-type(4)::before {
+    content: "⏰ ";
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+    text-align: center;
+    padding: 55px 20px;
+    background: linear-gradient(
+        135deg,
+        #dbeafe,
+        #e0f2fe
+    );
+}
+
+.page-header h1 {
+    color: #0f172a;
+    margin-bottom: 8px;
+    font-size: 36px;
+}
+
+.page-header h1::before {
+    content: "📊 ";
+}
+
+.page-header p {
+    color: #475569;
+}
+
+/* =========================
+   LOCATION DETAILS
+========================= */
+
+.location-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.location-detail .location-card h2::before {
+    content: "📍 ";
+}
+
+.alternative-item {
+    border-top: 1px solid #e2e8f0;
+    padding: 18px 0;
+}
+
+.alternative-item:first-of-type {
+    border-top: none;
+}
+
+.alternative-item h3::before {
+    content: "🧭 ";
+}
+
+/* =========================
+   REPORT SECTION
+========================= */
+
+.report-section {
+    background: white;
+    padding: 32px;
+    border-radius: 15px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.07);
+}
+
+.report-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 520px;
+}
+
+.report-section label {
+    font-weight: bold;
+    color: #334155;
+    margin-top: 10px;
+}
+
+.report-section select {
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: white;
+    font-size: 15px;
+    outline: none;
+}
+
+.report-section select:focus {
+    border-color: #2563eb;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 14px;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: #0f172a;
+    color: white;
+}
+
+td {
+    color: #475569;
+}
+
+/* =========================
+   FLASH MESSAGE
+========================= */
+
+.flash {
+    width: 86%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 14px 18px;
+    background: #dcfce7;
+    color: #166534;
+    border-left: 5px solid #22c55e;
+    border-radius: 8px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    background: #0f172a;
+    color: #cbd5e1;
+    padding: 24px;
+    margin-top: 50px;
+}
+
+footer p::before {
+    content: "🚀 ";
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 65px 20px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .page-header h1 {
+        font-size: 30px;
+    }
+
+    .location-detail {
+        grid-template-columns: 1fr;
+    }
+
+    .locations-section,
+    .dashboard-section,
+    .report-section,
+    .location-detail {
+        width: 92%;
+    }
+}

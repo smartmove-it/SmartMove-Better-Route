@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard – SmartMove
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+
+    <h1>SmartMove Dashboard</h1>
+
+    <p>
+        Monitor crowd conditions and find better travel options.
+    </p>
+
+</section>
+
+
+<section class="dashboard-section">
+
+    <h2>Location Overview</h2>
+
+    <div class="location-grid">
+
+        {% for location in locations %}
+
+        <div class="location-card">
+
+            <h3>{{ location["name"] }}</h3>
+
+            <p>
+                <strong>Area:</strong>
+                {{ location["area"] }}
+            </p>
+
+            <p>
+                <strong>Crowd Level:</strong>
+                {{ location["crowd_level"] }}
+            </p>
+
+            <p>
+                <strong>Crowd:</strong>
+                {{ location["crowd_count"] }}%
+            </p>
+
+            <p>
+                <strong>Recommended Time:</strong>
+                {{ location["best_time"] }}
+            </p>
+
+            <p>
+                <strong>Alternative:</strong>
+                {{ location["alternative"] }}
+            </p>
+
+            <a
+                href="{{ url_for('location', location_id=location['id']) }}"
+                class="btn small-btn"
+            >
+                View Details
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<section class="report-section">
+
+    <h2>SmartMove Insight</h2>
+
+    <p>
+        SmartMove helps users understand crowd conditions before
+        visiting a location. Users can check alternative locations
+        and suitable timings based on the available crowd data.
+    </p>
+
+</section>
+
+{% endblock %}
