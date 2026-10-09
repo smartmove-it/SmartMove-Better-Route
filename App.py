@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 app = Flask(__name__)
 app.secret_key = "smartmove-demo-secret"
@@ -234,7 +235,7 @@ def report():
     """, (
         location_id,
         crowd_level,
-        datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        datetime.now(ZoneInfo("Asia/Kolkata")).strftime("%Y-%m-%d %H:%M:%S")
     ))
 
     # Convert crowd level into estimated percentage
